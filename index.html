@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Indian Restaurant & Sweets</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#fafafa;
+}
+
+header{
+background:#b71c1c;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+nav{
+background:#222;
+padding:12px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+.hero{
+background:url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+background-size:cover;
+color:white;
+padding:120px 20px;
+text-align:center;
+}
+
+section{
+padding:40px;
+}
+
+h2{
+text-align:center;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.item{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.booking{
+max-width:400px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+background:#b71c1c;
+color:white;
+border:none;
+padding:12px;
+font-size:16px;
+width:100%;
+cursor:pointer;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Indian Restaurant & Sweets</h1>
+
+<p>Badarpur, Chapra, Assam</p>
+
+<p>Open Daily: 10 AM – 10 PM</p>
+
+</header>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#menu">Menu</a>
+<a href="#booking">Book Table</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+<div class="hero">
+
+<h1>Delicious Food & Refreshing Drinks</h1>
+
+<p>Enjoy the best coffee, shakes, burgers and more</p>
+
+</div>
+
+<section id="menu">
+
+<h2>Menu</h2>
+
+<div class="menu-grid">
+
+<div class="item"><h3>Hot Coffee</h3><p>₹40</p></div>
+<div class="item"><h3>Cold Coffee</h3><p>₹60</p></div>
+<div class="item"><h3>Hand Rock Coffee</h3><p>₹70</p></div>
+<div class="item"><h3>Oreo Shake</h3><p>₹80</p></div>
+<div class="item"><h3>Chocolate Shake</h3><p>₹80</p></div>
+<div class="item"><h3>Mango Shake</h3><p>₹70</p></div>
+
+<div class="item"><h3>Chicken Popcorn</h3><p>₹130</p></div>
+<div class="item"><h3>Chicken Wings</h3><p>₹100</p></div>
+<div class="item"><h3>Chicken Tenders</h3><p>₹90</p></div>
+
+<div class="item"><h3>Veg Burger</h3><p>₹100</p></div>
+<div class="item"><h3>Paneer Patty Burger</h3><p>₹160</p></div>
+<div class="item"><h3>Chicken Supreme Burger</h3><p>₹170</p></div>
+
+<div class="item"><h3>French Fries</h3><p>₹110</p></div>
+<div class="item"><h3>Peri Peri Fries</h3><p>₹130</p></div>
+
+<div class="item"><h3>Fresh Lime Juice</h3><p>₹40</p></div>
+<div class="item"><h3>Mango Lassi</h3><p>₹60</p></div>
+<div class="item"><h3>Fruit Lassi</h3><p>₹80</p></div>
+
+<div class="item"><h3>Blueberry Mocktail</h3><p>₹130</p></div>
+<div class="item"><h3>Orange Mocktail</h3><p>₹100</p></div>
+
+<div class="item"><h3>Vanilla Ice Cream</h3><p>₹50</p></div>
+<div class="item"><h3>Chocolate Ice Cream</h3><p>₹60</p></div>
+<div class="item"><h3>Fruit Salad Ice Cream</h3><p>₹120</p></div>
+
+</div>
+
+</section>
+
+<section id="booking">
+
+<h2>Book a Table</h2>
+
+<div class="booking">
+
+<input type="text" id="name" placeholder="Your Name">
+
+<input type="tel" id="phone" placeholder="Phone Number">
+
+<input type="date" id="date">
+
+<input type="time" id="time">
+
+<select id="people">
+<option>Guests</option>
+<option>1-2</option>
+<option>3-4</option>
+<option>5-6</option>
+<option>7+</option>
+</select>
+
+<button onclick="sendWhatsApp()">Book Table</button>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>📍 Badarpur, Chapra, Assam</p>
+
+<p>📞 9101694375</p>
+
+<p>⏰ 10 AM – 10 PM</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 Indian Restaurant & Sweets</p>
+
+</footer>
+
+<script>
+
+function sendWhatsApp(){
+
+var name=document.getElementById("name").value;
+var phone=document.getElementById("phone").value;
+var date=document.getElementById("date").value;
+var time=document.getElementById("time").value;
+var people=document.getElementById("people").value;
+
+var message="Table Booking%0A%0AName:"+name+"%0APhone:"+phone+"%0ADate:"+date+"%0ATime:"+time+"%0AGuests:"+people;
+
+var url="https://wa.me/919101694375?text="+message;
+
+window.open(url);
+
+}
+
+</script>
+
+</body>
+</html>
