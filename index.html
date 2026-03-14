@@ -1,85 +1,327 @@
-<p>Margherita Pizza ₹150</p>
-<p>Corn Veggies Pizza ₹180</p>
-<p>Paneer Veggies Pizza ₹210</p>
-<p>Corn Paneer Pizza ₹220</p>
-<p>Chicken Pizza ₹280</p>
+<!DOCTYPE html>
+<html>
+<head>
 
-<h3>Burger</h3>
+<title>Mr & Mrs Food Maker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<p>Veg Burger ₹90</p>
-<p>Chicken Burger ₹130</p>
+<style>
 
-<h3>Momo</h3>
+body{
+font-family:Arial;
+margin:0;
+background:#111;
+color:white;
+}
 
-<p>Veg Momo ₹30 / ₹50</p>
-<p>Chicken Momo ₹40 / ₹70</p>
+/* Header */
 
-<h3>Drinks</h3>
+header{
+background:#ff6a00;
+padding:15px;
+text-align:center;
+}
 
-<p>Masala Coke ₹40</p>
-<p>Lassi ₹60</p>
-<p>Hot Coffee ₹20</p>
-<p>Cold Coffee ₹50</p>
+/* Hero Section */
+
+.hero{
+background:url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+background-size:cover;
+background-position:center;
+height:250px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+background:rgba(0,0,0,0.6);
+padding:10px;
+border-radius:8px;
+}
+
+/* Container */
+
+.container{
+padding:15px;
+}
+
+/* Food Items */
+
+.food{
+background:#222;
+padding:10px;
+margin:10px 0;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.food img{
+width:60px;
+height:60px;
+border-radius:10px;
+}
+
+.food-name{
+flex:1;
+margin-left:10px;
+}
+
+/* Quantity */
+
+.qty{
+display:flex;
+gap:8px;
+align-items:center;
+}
+
+.qty button{
+width:28px;
+height:28px;
+background:#ff6a00;
+border:none;
+color:white;
+font-size:18px;
+border-radius:5px;
+}
+
+/* Form */
+
+input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+border:none;
+}
+
+.order-btn{
+background:#25D366;
+padding:15px;
+border:none;
+width:100%;
+font-size:18px;
+border-radius:10px;
+margin-top:10px;
+}
+
+.total{
+font-size:20px;
+margin-top:10px;
+}
+
+/* Reviews */
+
+.review{
+background:#222;
+padding:10px;
+border-radius:10px;
+margin:10px 0;
+}
+
+/* Footer */
+
+footer{
+background:#000;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h2>Mr & Mrs Food Maker</h2>
+<p>Delicious Food | Fast Delivery</p>
+
+</header>
+
+<div class="hero">
+
+<h1>Order Fresh Food Online</h1>
+<p>Pizza • Burger • Momo</p>
 
 </div>
 
+<div class="container">
 
-<div class="card" id="order">
+<h3>Menu</h3>
 
-<h2>Order Food</h2>
+<div class="food">
 
-<input id="name" type="text" placeholder="Your Name">
+<img src="https://i.imgur.com/eTmWoAN.png">
 
-<input id="address" type="text" placeholder="Delivery Address">
+<div class="food-name">
+Margherita Pizza ₹120
+</div>
 
-<select id="food">
-
-<option>Margherita Pizza</option>
-<option>Corn Veggies Pizza</option>
-<option>Paneer Veggies Pizza</option>
-<option>Chicken Pizza</option>
-<option>Veg Burger</option>
-<option>Chicken Burger</option>
-<option>Veg Momo</option>
-<option>Chicken Momo</option>
-
-</select>
-
-<button onclick="orderFood()">Order on WhatsApp</button>
+<div class="qty">
+<button onclick="changeQty('p1',-1)">-</button>
+<span id="p1">0</span>
+<button onclick="changeQty('p1',1)">+</button>
+</div>
 
 </div>
 
+<div class="food">
 
-<div class="card" id="book">
+<img src="https://i.imgur.com/Bm8XG5B.png">
 
-<h2>Book Table</h2>
+<div class="food-name">
+Veg Burger ₹70
+</div>
 
-<a href="https://wa.me/918453049219?text=Hello%20I%20want%20to%20book%20a%20table">
-
-<button>Book Table on WhatsApp</button>
-
-</a>
+<div class="qty">
+<button onclick="changeQty('b1',-1)">-</button>
+<span id="b1">0</span>
+<button onclick="changeQty('b1',1)">+</button>
+</div>
 
 </div>
 
+<div class="food">
 
-<div class="card" id="contact">
+<img src="https://i.imgur.com/Xq6b7W7.png">
 
-<h2>Contact</h2>
+<div class="food-name">
+Veg Momo ₹60
+</div>
 
-<p>📍 MS Trading Complex, Badarpur</p>
+<div class="qty">
+<button onclick="changeQty('m1',-1)">-</button>
+<span id="m1">0</span>
+<button onclick="changeQty('m1',1)">+</button>
+</div>
 
+</div>
+
+<h3>Customer Details</h3>
+
+<input id="name" placeholder="Your Name">
+
+<input id="address" placeholder="Delivery Address">
+
+<div class="total">
+Total: ₹<span id="total">0</span>
+</div>
+
+<button class="order-btn" onclick="sendOrder()">Order on WhatsApp</button>
+
+<h3>Customer Reviews</h3>
+
+<div class="review">
+⭐ ⭐ ⭐ ⭐ ⭐  
+"Very tasty pizza and fast delivery!"
+</div>
+
+<div class="review">
+⭐ ⭐ ⭐ ⭐  
+"Best momo in Badarpur."
+</div>
+
+<h3>Location</h3>
+
+<iframe
+width="100%"
+height="200"
+style="border:0"
+loading="lazy"
+src="https://maps.google.com/maps?q=Badarpur%20Assam&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</div>
+
+<footer>
+
+<p>© 2026 Mr & Mrs Food Maker</p>
 <p>📞 8453049219</p>
 
-<a href="https://wa.me/918453049219">
+</footer>
 
-<button>Chat on WhatsApp</button>
+<script>
 
-</a>
+let prices={
+p1:120,
+b1:70,
+m1:60
+};
 
-</div>
+function changeQty(id,val){
 
-</div>
+let el=document.getElementById(id);
+
+let qty=parseInt(el.innerText);
+
+qty+=val;
+
+if(qty<0) qty=0;
+
+el.innerText=qty;
+
+updateTotal();
+
+}
+
+function updateTotal(){
+
+let total=0;
+
+for(let id in prices){
+
+let qty=parseInt(document.getElementById(id).innerText);
+
+total+=qty*prices[id];
+
+}
+
+document.getElementById("total").innerText=total;
+
+}
+
+function sendOrder(){
+
+let name=document.getElementById("name").value;
+
+let address=document.getElementById("address").value;
+
+let msg="Order from Mr & Mrs Food Maker%0A";
+
+msg+="Name: "+name+"%0A";
+
+msg+="Address: "+address+"%0A%0A";
+
+let total=0;
+
+for(let id in prices){
+
+let qty=parseInt(document.getElementById(id).innerText);
+
+if(qty>0){
+
+msg+=id+" x "+qty+"%0A";
+
+total+=qty*prices[id];
+
+}
+
+}
+
+msg+="%0ATotal ₹"+total;
+
+window.open("https://wa.me/918453049219?text="+msg);
+
+}
+
+</script>
 
 </body>
-
+</html>
