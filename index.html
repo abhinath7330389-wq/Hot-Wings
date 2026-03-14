@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Hot Wings Restaurant</title>
 
 <style>
@@ -43,12 +41,23 @@ width:200px;
 text-align:center;
 }
 
+.qty{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+}
+
 button{
 background:orange;
 border:none;
-padding:8px 12px;
+padding:6px 12px;
 border-radius:5px;
 cursor:pointer;
+}
+
+button:hover{
+background:#ff9800;
 }
 
 input,select{
@@ -75,8 +84,7 @@ margin:20px;
 <header>
 
 <h1>🔥 Hot Wings Restaurant</h1>
-
-<p>Online Food Order & Table Booking</p>
+<p>Online Food Ordering & Table Booking</p>
 
 </header>
 
@@ -102,213 +110,86 @@ margin:20px;
 
 <h2>Book a Table</h2>
 
-<input placeholder="Name">
-<input placeholder="Phone">
+<input id="bname" placeholder="Name">
+<input id="bphone" placeholder="Phone">
 
-<input type="date">
-<input type="time">
+<input id="bdate" type="date">
+<input id="btime" type="time">
 
-<select>
-
+<select id="bpersons">
 <option>2 Persons</option>
 <option>4 Persons</option>
 <option>6 Persons</option>
 <option>10 Persons</option>
-
 </select>
 
-<button onclick="alert('Table booked successfully')">Book Table</button>
+<button onclick="bookTable()">Book Table</button>
 
 </div>
 
 <script>
 
-let menu = {
+let price=120
+
+let menu={
 
 "Momos":[
-"Deep Fried Momo",
-"Pan Fried Momo",
-"Honey Toast Momo",
-"Butter Toast Momo",
-"Hot Garlic Momo",
-"Chilli Soya Toast Momo",
-"Mayonnaise Momo",
-"Schezwan Momo",
-"Tandoori Momo",
-"Dahi Momo",
-"Afghani Momo",
-"Kurkure Momo",
-"Momo Thali (15pcs)",
-"Hariyali Momo",
-"Pizza Momo",
-"Wonton Momo"
+"Deep Fried Momo","Pan Fried Momo","Honey Toast Momo","Butter Toast Momo",
+"Hot Garlic Momo","Chilli Soya Toast Momo","Mayonnaise Momo","Schezwan Momo",
+"Tandoori Momo","Dahi Momo","Afghani Momo","Kurkure Momo",
+"Momo Thali (15pcs)","Hariyali Momo","Pizza Momo","Wonton Momo"
 ],
 
 "Pizza":[
-"Margherita Pizza",
-"Paneer Cheese Pizza",
-"Paneer Tikka Pizza",
-"Chicken Cheese Pizza",
-"Meat Lovers Pizza",
-"Chicken Tikka Pizza",
-"Achari Chicken Pizza",
-"Mixed Pizza (Large)",
+"Margherita Pizza","Paneer Cheese Pizza","Paneer Tikka Pizza",
+"Chicken Cheese Pizza","Meat Lovers Pizza","Chicken Tikka Pizza",
+"Achari Chicken Pizza","Mixed Pizza (Large)",
 "Hot Wings Special Pizza (Super Large)",
-"Corn Cheese Pizza",
-"Special Combo Pizza"
+"Corn Cheese Pizza","Special Combo Pizza"
 ],
 
 "Burgers":[
-"Veg Burger",
-"Chicken Burger",
-"Chicken Cheese Burger",
-"Veg Cheese Burger"
+"Veg Burger","Chicken Burger","Chicken Cheese Burger","Veg Cheese Burger"
 ],
 
 "Beverages":[
-"Coffee",
-"Lime Juice",
-"Masala Cold Drink",
-"Cold Coffee",
-"Lassi",
-"Coffee Xpresso"
+"Coffee","Lime Juice","Masala Cold Drink","Cold Coffee","Lassi","Coffee Xpresso"
 ],
 
 "Rolls":[
-"Veg Roll",
-"Egg Roll",
-"Double Egg Roll",
-"Jumbo Egg Roll",
-"Chicken Roll",
-"Egg Chicken Roll",
-"Panner Roll",
-"Special Roll"
+"Veg Roll","Egg Roll","Double Egg Roll","Jumbo Egg Roll",
+"Chicken Roll","Egg Chicken Roll","Paneer Roll","Special Roll"
 ],
 
 "Veg Starters":[
-"Paneer Pakoda",
-"Chilli Paneer Dry Fry",
-"Veg Manchurian",
-"Panner Manchurian",
-"French Fry",
-"Honey Chilli Potato",
-"Crispy Chilli Corn"
-],
-
-"Snacks & Beverages":[
-"Tea",
-"Coffee",
-"Veg Pakoda",
-"Onion Pakoda",
-"Lime Juice",
-"Mojito",
-"Masala Cold Drink"
+"Paneer Pakoda","Chilli Paneer Dry Fry","Veg Manchurian",
+"Paneer Manchurian","French Fry","Honey Chilli Potato","Crispy Chilli Corn"
 ],
 
 "Rice":[
-"Plain Rice",
-"Ghee Rice",
-"Veg Fried Rice",
-"Jeera Rice",
-"Egg Fried Rice",
-"Paneer Fried Rice",
-"Andhra Veg Rice",
-"Chicken Fried Rice",
-"Andhra Chicken Rice",
-"Chicken Schezwan Fried Rice",
-"Mixed Fried Rice",
-"Singapoori Rice",
-"Korean Rice",
-"Hong Kong Rice"
+"Plain Rice","Ghee Rice","Veg Fried Rice","Jeera Rice",
+"Egg Fried Rice","Paneer Fried Rice","Chicken Fried Rice",
+"Andhra Chicken Rice","Mixed Fried Rice"
 ],
 
 "Noodles":[
-"Veg Noodles",
-"Egg Noodles",
-"Egg Schezwan Noodles",
-"Paneer Noodles",
-"Chicken Noodles",
-"Paneer Schezwan Noodles",
-"Chicken Schezwan Noodles",
-"Chicken Gravy Noodles",
-"Paneer Gravy Noodles",
-"Chicken Thukpa",
-"Mixed Noodles",
-"American Chopsuey"
-],
-
-"Combo Offer":[
-"Veg Fried Rice + Chilli Chicken",
-"Chilli Paneer + Plain Rice",
-"Chicken Curry + Veg Noodles",
-"French Fry + Cold Drink",
-"Crispy Chilli Baby Corn"
-],
-
-"Sizzler":[
-"Veg Sizzler",
-"Chicken Sizzler"
-],
-
-"Roti / Naan":[
-"Plain Roti",
-"Butter Roti",
-"Tandoori Roti",
-"Butter Tandoori Roti",
-"Plain Naan",
-"Butter Naan",
-"Garlic Naan",
-"Paneer Naan",
-"Laccha Paratha",
-"Malai Naan"
-],
-
-"Shake":[
-"Mango Milkshake",
-"Butter Scotch Shake",
-"Guava Milkshake",
-"Grapes Milkshake"
-],
-
-"Wrap & Tacos":[
-"Chicken Tacos",
-"Tortilla Wrap"
+"Veg Noodles","Egg Noodles","Paneer Noodles",
+"Chicken Noodles","Chicken Schezwan Noodles","Mixed Noodles"
 ],
 
 "Biryani":[
-"Chicken Dum Biryani",
-"Paneer Dum Biryani",
-"Egg Biryani",
-"Mutton Dum Biryani"
+"Chicken Dum Biryani","Paneer Dum Biryani","Egg Biryani","Mutton Dum Biryani"
 ],
 
 "Tandoori":[
-"Chicken Tandoori",
-"Chicken Leg",
-"Chicken Breast",
-"Chicken Tikka",
-"Malai Tikka",
-"Hot Wings",
-"Afghani Chicken",
-"Paneer Tikka",
-"Pron Tikka",
-"Fish Tikka"
-],
-
-"Breakfast":[
-"Tea",
-"Coffee",
-"Plain Polao",
-"Plain Paratha",
-"Chole Bhature",
-"Alu Paratha",
-"Laccha Paratha"
+"Chicken Tandoori","Chicken Leg","Chicken Breast","Chicken Tikka",
+"Malai Tikka","Hot Wings","Afghani Chicken","Paneer Tikka",
+"Prawn Tikka","Fish Tikka"
 ]
 
 }
 
-let cart=[]
-let total=0
+let cart={}
 
 function buildMenu(){
 
@@ -324,53 +205,73 @@ title.innerText=category
 
 section.appendChild(title)
 
-let menuBox=document.createElement("div")
-menuBox.className="menu"
+let box=document.createElement("div")
+box.className="menu"
 
 menu[category].forEach(food=>{
 
 let item=document.createElement("div")
 item.className="item"
 
-item.innerHTML="<h4>"+food+"</h4><p>₹120</p><button onclick=\"add('"+food+"',120)\">Add</button>"
+item.innerHTML=`
 
-menuBox.appendChild(item)
+<h4>${food}</h4>
+<p>₹${price}</p>
+
+<div class="qty">
+<button onclick="changeQty('${food}',-1)">-</button>
+<span id="${food}">0</span>
+<button onclick="changeQty('${food}',1)">+</button>
+</div>
+
+`
+
+box.appendChild(item)
 
 })
 
-section.appendChild(menuBox)
-
+section.appendChild(box)
 container.appendChild(section)
 
 }
 
 }
 
-function add(name,price){
+function changeQty(food,val){
 
-cart.push({name,price})
+if(!cart[food]) cart[food]=0
 
-total+=price
+cart[food]+=val
 
-update()
+if(cart[food]<0) cart[food]=0
+
+document.getElementById(food).innerText=cart[food]
+
+updateCart()
 
 }
 
-function update(){
+function updateCart(){
 
 let list=document.getElementById("cart")
-
 list.innerHTML=""
 
-cart.forEach(item=>{
+let total=0
+
+for(let item in cart){
+
+if(cart[item]>0){
 
 let li=document.createElement("li")
-
-li.innerText=item.name+" ₹"+item.price
+li.innerText=item+" x "+cart[item]
 
 list.appendChild(li)
 
-})
+total+=cart[item]*price
+
+}
+
+}
 
 document.getElementById("total").innerText=total
 
@@ -382,16 +283,38 @@ let name=document.getElementById("name").value
 let phone=document.getElementById("phone").value
 let address=document.getElementById("address").value
 
-let msg="New Order:%0A"
+let msg="Food Order:%0A"
 
-cart.forEach(item=>{
-msg+=item.name+" ₹"+item.price+"%0A"
-})
+for(let item in cart){
 
-msg+="Total: ₹"+total+"%0A"
+if(cart[item]>0){
+msg+=item+" x "+cart[item]+"%0A"
+}
+
+}
+
 msg+="Name:"+name+"%0A"
 msg+="Phone:"+phone+"%0A"
 msg+="Address:"+address
+
+window.open("https://wa.me/919957603281?text="+msg)
+
+}
+
+function bookTable(){
+
+let name=document.getElementById("bname").value
+let phone=document.getElementById("bphone").value
+let date=document.getElementById("bdate").value
+let time=document.getElementById("btime").value
+let persons=document.getElementById("bpersons").value
+
+let msg="Table Booking:%0A"
+msg+="Name:"+name+"%0A"
+msg+="Phone:"+phone+"%0A"
+msg+="Date:"+date+"%0A"
+msg+="Time:"+time+"%0A"
+msg+="Persons:"+persons
 
 window.open("https://wa.me/919957603281?text="+msg)
 
