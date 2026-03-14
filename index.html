@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Indian Restaurant & Sweets</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mr & Mrs Food Maker</title>
 
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
 margin:0;
-background:#fafafa;
+background:#111;
+color:white;
 }
 
 header{
-background:#b71c1c;
-color:white;
-text-align:center;
+background:#ff6a00;
 padding:25px;
+text-align:center;
 }
 
 nav{
-background:#222;
-padding:12px;
+background:#000;
+padding:10px;
 text-align:center;
 }
 
@@ -33,203 +31,161 @@ text-decoration:none;
 font-size:18px;
 }
 
-.hero{
-background:url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
-background-size:cover;
-color:white;
-padding:120px 20px;
-text-align:center;
-}
-
-section{
-padding:40px;
-}
-
-h2{
-text-align:center;
-}
-
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
-
-.item{
-background:white;
-padding:15px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-.booking{
-max-width:400px;
-margin:auto;
-background:white;
+.container{
 padding:20px;
+}
+
+.card{
+background:#222;
+padding:20px;
+margin:15px 0;
 border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+button{
+background:#ff6a00;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:6px;
+font-size:16px;
 }
 
 input,select{
 width:100%;
 padding:10px;
-margin:10px 0;
-}
-
-button{
-background:#b71c1c;
-color:white;
-border:none;
-padding:12px;
-font-size:16px;
-width:100%;
-cursor:pointer;
-}
-
-footer{
-background:#222;
-color:white;
-text-align:center;
-padding:20px;
+margin:8px 0;
 }
 
 </style>
+
+<script>
+
+function orderFood(){
+
+var name=document.getElementById("name").value;
+var food=document.getElementById("food").value;
+var address=document.getElementById("address").value;
+
+var message="Hello Mr & Mrs Food Maker,%0AName: "+name+"%0AFood: "+food+"%0AAddress: "+address;
+
+window.open("https://wa.me/918453049219?text="+message);
+
+}
+
+</script>
+
 </head>
 
 <body>
 
 <header>
 
-<h1>Indian Restaurant & Sweets</h1>
+<h1>Mr & Mrs Food Maker</h1>
 
-<p>Badarpur, Chapra, Assam</p>
-
-<p>Open Daily: 10 AM – 10 PM</p>
+<p>Order Food Online | Badarpur</p>
 
 </header>
 
 <nav>
 
-<a href="#">Home</a>
 <a href="#menu">Menu</a>
-<a href="#booking">Book Table</a>
+<a href="#order">Order</a>
+<a href="#book">Book Table</a>
 <a href="#contact">Contact</a>
 
 </nav>
 
-<div class="hero">
+<div class="container">
 
-<h1>Delicious Food & Refreshing Drinks</h1>
-
-<p>Enjoy the best coffee, shakes, burgers and more</p>
-
-</div>
-
-<section id="menu">
+<div class="card" id="menu">
 
 <h2>Menu</h2>
 
-<div class="menu-grid">
+<h3>Pizza</h3>
 
-<div class="item"><h3>Hot Coffee</h3><p>₹40</p></div>
-<div class="item"><h3>Cold Coffee</h3><p>₹60</p></div>
-<div class="item"><h3>Hand Rock Coffee</h3><p>₹70</p></div>
-<div class="item"><h3>Oreo Shake</h3><p>₹80</p></div>
-<div class="item"><h3>Chocolate Shake</h3><p>₹80</p></div>
-<div class="item"><h3>Mango Shake</h3><p>₹70</p></div>
+<p>Margherita Pizza ₹150</p>
+<p>Corn Veggies Pizza ₹180</p>
+<p>Paneer Veggies Pizza ₹210</p>
+<p>Corn Paneer Pizza ₹220</p>
+<p>Chicken Pizza ₹280</p>
 
-<div class="item"><h3>Chicken Popcorn</h3><p>₹130</p></div>
-<div class="item"><h3>Chicken Wings</h3><p>₹100</p></div>
-<div class="item"><h3>Chicken Tenders</h3><p>₹90</p></div>
+<h3>Burger</h3>
 
-<div class="item"><h3>Veg Burger</h3><p>₹100</p></div>
-<div class="item"><h3>Paneer Patty Burger</h3><p>₹160</p></div>
-<div class="item"><h3>Chicken Supreme Burger</h3><p>₹170</p></div>
+<p>Veg Burger ₹90</p>
+<p>Chicken Burger ₹130</p>
 
-<div class="item"><h3>French Fries</h3><p>₹110</p></div>
-<div class="item"><h3>Peri Peri Fries</h3><p>₹130</p></div>
+<h3>Momo</h3>
 
-<div class="item"><h3>Fresh Lime Juice</h3><p>₹40</p></div>
-<div class="item"><h3>Mango Lassi</h3><p>₹60</p></div>
-<div class="item"><h3>Fruit Lassi</h3><p>₹80</p></div>
+<p>Veg Momo ₹30 / ₹50</p>
+<p>Chicken Momo ₹40 / ₹70</p>
 
-<div class="item"><h3>Blueberry Mocktail</h3><p>₹130</p></div>
-<div class="item"><h3>Orange Mocktail</h3><p>₹100</p></div>
+<h3>Drinks</h3>
 
-<div class="item"><h3>Vanilla Ice Cream</h3><p>₹50</p></div>
-<div class="item"><h3>Chocolate Ice Cream</h3><p>₹60</p></div>
-<div class="item"><h3>Fruit Salad Ice Cream</h3><p>₹120</p></div>
+<p>Masala Coke ₹40</p>
+<p>Lassi ₹60</p>
+<p>Hot Coffee ₹20</p>
+<p>Cold Coffee ₹50</p>
 
 </div>
 
-</section>
 
-<section id="booking">
+<div class="card" id="order">
 
-<h2>Book a Table</h2>
+<h2>Order Food</h2>
 
-<div class="booking">
+<input id="name" type="text" placeholder="Your Name">
 
-<input type="text" id="name" placeholder="Your Name">
+<input id="address" type="text" placeholder="Delivery Address">
 
-<input type="tel" id="phone" placeholder="Phone Number">
+<select id="food">
 
-<input type="date" id="date">
+<option>Margherita Pizza</option>
+<option>Corn Veggies Pizza</option>
+<option>Paneer Veggies Pizza</option>
+<option>Chicken Pizza</option>
+<option>Veg Burger</option>
+<option>Chicken Burger</option>
+<option>Veg Momo</option>
+<option>Chicken Momo</option>
 
-<input type="time" id="time">
-
-<select id="people">
-<option>Guests</option>
-<option>1-2</option>
-<option>3-4</option>
-<option>5-6</option>
-<option>7+</option>
 </select>
 
-<button onclick="sendWhatsApp()">Book Table</button>
+<button onclick="orderFood()">Order on WhatsApp</button>
 
 </div>
 
-</section>
 
-<section id="contact">
+<div class="card" id="book">
+
+<h2>Book Table</h2>
+
+<a href="https://wa.me/918453049219?text=Hello%20I%20want%20to%20book%20a%20table">
+
+<button>Book Table on WhatsApp</button>
+
+</a>
+
+</div>
+
+
+<div class="card" id="contact">
 
 <h2>Contact</h2>
 
-<p>📍 Badarpur, Chapra, Assam</p>
+<p>📍 MS Trading Complex, Badarpur</p>
 
-<p>📞 9101694375</p>
+<p>📞 8453049219</p>
 
-<p>⏰ 10 AM – 10 PM</p>
+<a href="https://wa.me/918453049219">
 
-</section>
+<button>Chat on WhatsApp</button>
 
-<footer>
+</a>
 
-<p>© 2026 Indian Restaurant & Sweets</p>
+</div>
 
-</footer>
-
-<script>
-
-function sendWhatsApp(){
-
-var name=document.getElementById("name").value;
-var phone=document.getElementById("phone").value;
-var date=document.getElementById("date").value;
-var time=document.getElementById("time").value;
-var people=document.getElementById("people").value;
-
-var message="Table Booking%0A%0AName:"+name+"%0APhone:"+phone+"%0ADate:"+date+"%0ATime:"+time+"%0AGuests:"+people;
-
-var url="https://wa.me/919101694375?text="+message;
-
-window.open(url);
-
-}
-
-</script>
+</div>
 
 </body>
 </html>
