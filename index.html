@@ -1,350 +1,289 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mr & Mrs Food Maker</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Hot Wings Restaurant</title>
 
 <style>
 
 body{
 font-family:Arial;
 margin:0;
-background:#111;
+background:#121212;
 color:white;
+text-align:center;
 }
 
 header{
-background:#ff6a00;
-text-align:center;
-padding:15px;
+background:#000;
+padding:20px;
 }
 
-.container{
-padding:15px;
+h1{
+color:#ff9800;
+margin:0;
 }
 
-.category{
-margin-top:25px;
-font-size:22px;
-border-bottom:2px solid #444;
-padding-bottom:5px;
+nav{
+margin-top:10px;
 }
 
-.food{
-background:#222;
-margin:8px 0;
-padding:10px;
-border-radius:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.qty{
-display:flex;
-gap:8px;
-align-items:center;
-}
-
-.qty button{
-width:28px;
-height:28px;
-background:#ff6a00;
-border:none;
+nav a{
 color:white;
-font-size:18px;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+section{
+padding:40px 20px;
+}
+
+.menu-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.item{
+background:#1e1e1e;
+margin:10px;
+padding:20px;
+width:220px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+button{
+background:#ff9800;
+border:none;
+padding:10px 15px;
+cursor:pointer;
 border-radius:5px;
+font-weight:bold;
+}
+
+button:hover{
+background:#ffa726;
 }
 
 input{
-width:100%;
+display:block;
+margin:10px auto;
 padding:10px;
-margin:6px 0;
-border-radius:8px;
+width:230px;
+border-radius:5px;
 border:none;
 }
 
-.orderbtn{
-background:#25D366;
-border:none;
-padding:15px;
-width:100%;
-font-size:18px;
-border-radius:10px;
-margin-top:10px;
+#cart{
+list-style:none;
+padding:0;
 }
 
-.total{
+footer{
+background:black;
+padding:20px;
+margin-top:40px;
+}
+
+.total-box{
 font-size:20px;
-margin-top:10px;
+margin:10px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
-<h2>Mr & Mrs Food Maker</h2>
-<p>Order Food Online | Badarpur</p>
+
+<h1>🔥 Hot Wings Restaurant</h1>
+
+<nav>
+<a href="#menu">Menu</a>
+<a href="#order">Order</a>
+<a href="#booking">Book Table</a>
+</nav>
+
 </header>
 
-<div class="container" id="menu"></div>
+<section id="menu">
 
-<div class="container">
+<h2>Popular Menu</h2>
 
-<h3>Customer Details</h3>
+<div class="menu-container">
 
-<input id="name" placeholder="Your Name">
-<input id="address" placeholder="Delivery Address">
+<div class="item">
+<h3>Veg Momos</h3>
+<p>₹40</p>
+<button onclick="addToCart('Veg Momos',40)">Add</button>
+</div>
 
-<div class="total">
+<div class="item">
+<h3>Chicken Momos</h3>
+<p>₹70</p>
+<button onclick="addToCart('Chicken Momos',70)">Add</button>
+</div>
+
+<div class="item">
+<h3>Chicken Burger</h3>
+<p>₹80</p>
+<button onclick="addToCart('Chicken Burger',80)">Add</button>
+</div>
+
+<div class="item">
+<h3>Veg Fried Rice</h3>
+<p>₹50</p>
+<button onclick="addToCart('Veg Fried Rice',50)">Add</button>
+</div>
+
+<div class="item">
+<h3>Chicken Fried Rice</h3>
+<p>₹80</p>
+<button onclick="addToCart('Chicken Fried Rice',80)">Add</button>
+</div>
+
+<div class="item">
+<h3>Chicken Roll</h3>
+<p>₹80</p>
+<button onclick="addToCart('Chicken Roll',80)">Add</button>
+</div>
+
+<div class="item">
+<h3>Mixed Noodles</h3>
+<p>₹80</p>
+<button onclick="addToCart('Mixed Noodles',80)">Add</button>
+</div>
+
+<div class="item">
+<h3>Chilli Paneer</h3>
+<p>₹110</p>
+<button onclick="addToCart('Chilli Paneer',110)">Add</button>
+</div>
+
+</div>
+
+</section>
+
+<section id="order">
+
+<h2>Your Cart</h2>
+
+<ul id="cart"></ul>
+
+<div class="total-box">
 Total: ₹<span id="total">0</span>
 </div>
 
-<button class="orderbtn" onclick="sendOrder()">Order on WhatsApp</button>
+<h3>Customer Details</h3>
 
-<h3>Book a Table</h3>
+<input type="text" id="customerName" placeholder="Your Name">
+<input type="text" id="customerPhone" placeholder="Phone Number">
+<input type="text" id="customerAddress" placeholder="Delivery Address">
 
-<input id="tableName" placeholder="Your Name">
-<input id="tablePhone" placeholder="Phone Number">
-<input id="tableDate" type="date">
-<input id="tableTime" type="time">
-<input id="tableGuests" placeholder="Number of Guests">
+<button onclick="placeOrder()">Place Order</button>
 
-<button class="orderbtn" onclick="bookTable()">Book Table</button>
+</section>
 
-</div>
+<section id="booking">
+
+<h2>Book a Table</h2>
+
+<form id="bookingForm">
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="date" required>
+
+<input type="time" required>
+
+<input type="number" placeholder="Number of People" required>
+
+<button type="submit">Book Table</button>
+
+</form>
+
+</section>
+
+<footer>
+
+<p>📞 Home Delivery: 9957603281</p>
+<p>© Hot Wings Restaurant</p>
+
+</footer>
 
 <script>
 
-let menu = {
+let cart=[]
+let total=0
 
-"Starter":{
-"Chicken Pakoda":90,
-"Veg Pakoda":80,
-"Paneer Pakoda":150,
-"Onion Pakoda":80,
-"Crispy Chicken":150,
-"Leg Piece":100,
-"Wings Lollipop":100,
-"French Fries":100
-},
+function addToCart(name,price){
 
-"Tawa":{
-"Roti":10,
-"Butter Roti":15,
-"Plain Paratha":30,
-"Aloo Paratha":40
-},
+cart.push({name,price})
+total+=price
 
-"Manchurian":{
-"Veg Manchurian":120,
-"Chicken Manchurian":180,
-"Paneer Manchurian":200,
-"Gobi Manchurian":150
-},
-
-"Rice":{
-"Veg Fried Rice":100,
-"Jeera Rice":80,
-"Ghee Rice":100,
-"Steam Rice":70,
-"Egg Fried Rice":120,
-"Chicken Fried Rice":150,
-"Mixed Fried Rice":160,
-"Paneer Fried Rice":150
-},
-
-"Chicken Items":{
-"Chicken Masala":200,
-"Butter Chicken Masala":220,
-"Chicken Kosha":200,
-"Chilli Chicken":180,
-"Chicken Dry Fry":180,
-"Chicken Leg Masala":180,
-"Spicy Chicken Dry Fry":200
-},
-
-"Chowmein":{
-"Veg Chowmein":100,
-"Chicken Chowmein":140,
-"Egg Chowmein":110,
-"Paneer Chowmein":150,
-"Mix Chowmein":120
-},
-
-"Biriyani":{
-"Hyderabadi Biriyani":250,
-"Dum Biriyani":200
-},
-
-"Pizza":{
-"Margherita Pizza":150,
-"Corn Veggies Pizza":180,
-"Paneer Veggies Pizza":210,
-"Corn Paneer Pizza":220,
-"Blockbuster Pizza":260,
-"Chicken Pizza":280,
-"Loaded All In One":300
-},
-
-"Momo":{
-"Chicken Momo":70,
-"Veg Momo":50
-},
-
-"Burger":{
-"Veg Burger":90,
-"Chicken Burger":130
-},
-
-"Drinks":{
-"Masala Coke":40,
-"Lassi":60,
-"Hot Coffee":20,
-"Cold Coffee":50,
-"Milkshake":70,
-"Tea":15
-}
-
-};
-
-let quantities={};
-
-let menuDiv=document.getElementById("menu");
-
-for(let category in menu){
-
-let title=document.createElement("div");
-title.className="category";
-title.innerText=category;
-
-menuDiv.appendChild(title);
-
-for(let item in menu[category]){
-
-let price=menu[category][item];
-
-let food=document.createElement("div");
-food.className="food";
-
-let name=document.createElement("span");
-name.innerText=item+" ₹"+price;
-
-let qtyDiv=document.createElement("div");
-qtyDiv.className="qty";
-
-let minus=document.createElement("button");
-minus.innerText="-";
-
-let plus=document.createElement("button");
-plus.innerText="+";
-
-let qty=document.createElement("span");
-qty.innerText="0";
-
-quantities[item]=0;
-
-minus.onclick=function(){
-
-if(quantities[item]>0){
-quantities[item]--;
-qty.innerText=quantities[item];
-updateTotal();
-}
+updateCart()
 
 }
 
-plus.onclick=function(){
+function updateCart(){
 
-quantities[item]++;
-qty.innerText=quantities[item];
-updateTotal();
+let cartList=document.getElementById("cart")
+cartList.innerHTML=""
 
-}
+cart.forEach(item=>{
 
-qtyDiv.appendChild(minus);
-qtyDiv.appendChild(qty);
-qtyDiv.appendChild(plus);
+let li=document.createElement("li")
+li.innerText=item.name+" - ₹"+item.price
+cartList.appendChild(li)
 
-food.appendChild(name);
-food.appendChild(qtyDiv);
+})
 
-menuDiv.appendChild(food);
+document.getElementById("total").innerText=total
 
 }
 
+function placeOrder(){
+
+let name=document.getElementById("customerName").value
+let phone=document.getElementById("customerPhone").value
+let address=document.getElementById("customerAddress").value
+
+if(cart.length==0){
+alert("Cart is empty")
+return
 }
 
-function updateTotal(){
-
-let total=0;
-
-for(let category in menu){
-for(let item in menu[category]){
-
-total+=quantities[item]*menu[category][item];
-
-}
+if(name=="" || phone=="" || address==""){
+alert("Please fill customer details")
+return
 }
 
-document.getElementById("total").innerText=total;
+alert("Order placed successfully!\nThank you "+name)
 
-}
+cart=[]
+total=0
+updateCart()
 
-function sendOrder(){
-
-let name=document.getElementById("name").value;
-let address=document.getElementById("address").value;
-
-let msg="Order from Mr & Mrs Food Maker%0A";
-
-msg+="Name: "+name+"%0A";
-msg+="Address: "+address+"%0A%0A";
-
-let total=0;
-
-for(let category in menu){
-for(let item in menu[category]){
-
-if(quantities[item]>0){
-
-msg+=item+" x "+quantities[item]+"%0A";
-total+=quantities[item]*menu[category][item];
+document.getElementById("customerName").value=""
+document.getElementById("customerPhone").value=""
+document.getElementById("customerAddress").value=""
 
 }
 
-}
-}
+document.getElementById("bookingForm").addEventListener("submit",function(e){
 
-msg+="%0ATotal ₹"+total;
+e.preventDefault()
 
-window.open("https://wa.me/918453049219?text="+msg);
+alert("Table booked successfully!")
 
-}
-
-function bookTable(){
-
-let name=document.getElementById("tableName").value;
-let phone=document.getElementById("tablePhone").value;
-let date=document.getElementById("tableDate").value;
-let time=document.getElementById("tableTime").value;
-let guests=document.getElementById("tableGuests").value;
-
-let msg="Table Booking - Mr & Mrs Food Maker%0A";
-
-msg+="Name: "+name+"%0A";
-msg+="Phone: "+phone+"%0A";
-msg+="Date: "+date+"%0A";
-msg+="Time: "+time+"%0A";
-msg+="Guests: "+guests;
-
-window.open("https://wa.me/918453049219?text="+msg);
-
-}
+})
 
 </script>
 
 </body>
 </html>
+
