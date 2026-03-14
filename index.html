@@ -21,38 +21,15 @@ text-align:center;
 
 h1{
 color:orange;
-margin:0;
 }
 
-.category-bar{
-overflow-x:auto;
-white-space:nowrap;
-background:#1a1a1a;
-padding:10px;
+.menu-section{
+margin:30px;
 }
 
-.category-bar a{
-display:inline-block;
-color:white;
-background:#333;
-padding:8px 15px;
-margin:5px;
-border-radius:20px;
-text-decoration:none;
-font-size:14px;
-}
-
-.category-bar a:hover{
-background:orange;
-}
-
-section{
-padding:20px;
-}
-
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+.menu{
+display:flex;
+flex-wrap:wrap;
 gap:15px;
 }
 
@@ -60,6 +37,7 @@ gap:15px;
 background:#222;
 padding:15px;
 border-radius:10px;
+width:200px;
 text-align:center;
 }
 
@@ -67,7 +45,6 @@ button{
 background:orange;
 border:none;
 padding:8px 12px;
-margin-top:8px;
 border-radius:5px;
 cursor:pointer;
 }
@@ -76,24 +53,19 @@ button:hover{
 background:#ff9800;
 }
 
-.cart-box{
-background:#000;
-padding:20px;
-}
-
-input{
+input,select{
 display:block;
-width:220px;
 margin:10px auto;
 padding:10px;
-border:none;
+width:250px;
 border-radius:5px;
+border:none;
 }
 
-footer{
-background:black;
-text-align:center;
+.cart{
+background:#000;
 padding:20px;
+margin:20px;
 }
 
 </style>
@@ -103,170 +75,69 @@ padding:20px;
 <body>
 
 <header>
+
 <h1>🔥 Hot Wings Restaurant</h1>
+
+<p>Order Food Online & Book Table</p>
+
 </header>
 
-<div class="category-bar">
+<!-- MOMOS -->
 
-<a href="#momos">Momos</a>
-<a href="#pizza">Pizza</a>
-<a href="#burgers">Burgers</a>
-<a href="#rolls">Rolls</a>
-<a href="#rice">Rice</a>
-<a href="#noodles">Noodles</a>
-<a href="#biryani">Biryani</a>
-<a href="#tandoori">Tandoori</a>
-<a href="#beverages">Beverages</a>
-
-</div>
-
-<section id="momos">
+<div class="menu-section">
 
 <h2>Momos</h2>
 
-<div class="menu-grid">
+<div class="menu">
 
-<div class="item"><h3>Deep Fried Momo</h3><p>₹90</p><button onclick="add('Deep Fried Momo',90)">Add</button></div>
-
-<div class="item"><h3>Pan Fried Momo</h3><p>₹90</p><button onclick="add('Pan Fried Momo',90)">Add</button></div>
-
-<div class="item"><h3>Tandoori Momo</h3><p>₹120</p><button onclick="add('Tandoori Momo',120)">Add</button></div>
-
-<div class="item"><h3>Kurkure Momo</h3><p>₹120</p><button onclick="add('Kurkure Momo',120)">Add</button></div>
-
-<div class="item"><h3>Pizza Momo</h3><p>₹130</p><button onclick="add('Pizza Momo',130)">Add</button></div>
+<div class="item"><h4>Deep Fried Momo</h4><p>₹90</p><button onclick="add('Deep Fried Momo',90)">Add</button></div>
+<div class="item"><h4>Pan Fried Momo</h4><p>₹90</p><button onclick="add('Pan Fried Momo',90)">Add</button></div>
+<div class="item"><h4>Honey Toast Momo</h4><p>₹110</p><button onclick="add('Honey Toast Momo',110)">Add</button></div>
+<div class="item"><h4>Butter Toast Momo</h4><p>₹110</p><button onclick="add('Butter Toast Momo',110)">Add</button></div>
+<div class="item"><h4>Hot Garlic Momo</h4><p>₹100</p><button onclick="add('Hot Garlic Momo',100)">Add</button></div>
+<div class="item"><h4>Chilli Soya Toast Momo</h4><p>₹100</p><button onclick="add('Chilli Soya Toast Momo',100)">Add</button></div>
+<div class="item"><h4>Mayonnaise Momo</h4><p>₹110</p><button onclick="add('Mayonnaise Momo',110)">Add</button></div>
+<div class="item"><h4>Schezwan Momo</h4><p>₹100</p><button onclick="add('Schezwan Momo',100)">Add</button></div>
+<div class="item"><h4>Tandoori Momo</h4><p>₹120</p><button onclick="add('Tandoori Momo',120)">Add</button></div>
+<div class="item"><h4>Dahi Momo</h4><p>₹120</p><button onclick="add('Dahi Momo',120)">Add</button></div>
+<div class="item"><h4>Afghani Momo</h4><p>₹130</p><button onclick="add('Afghani Momo',130)">Add</button></div>
+<div class="item"><h4>Kurkure Momo</h4><p>₹120</p><button onclick="add('Kurkure Momo',120)">Add</button></div>
+<div class="item"><h4>Momo Thali (15pcs)</h4><p>₹200</p><button onclick="add('Momo Thali',200)">Add</button></div>
+<div class="item"><h4>Hariyali Momo</h4><p>₹130</p><button onclick="add('Hariyali Momo',130)">Add</button></div>
+<div class="item"><h4>Pizza Momo</h4><p>₹130</p><button onclick="add('Pizza Momo',130)">Add</button></div>
+<div class="item"><h4>Wonton Momo</h4><p>₹140</p><button onclick="add('Wonton Momo',140)">Add</button></div>
 
 </div>
 
-</section>
+</div>
 
-<section id="pizza">
+<!-- PIZZA -->
+
+<div class="menu-section">
 
 <h2>Pizza</h2>
 
-<div class="menu-grid">
+<div class="menu">
 
-<div class="item"><h3>Margherita Pizza</h3><p>₹199</p><button onclick="add('Margherita Pizza',199)">Add</button></div>
-
-<div class="item"><h3>Paneer Cheese Pizza</h3><p>₹249</p><button onclick="add('Paneer Cheese Pizza',249)">Add</button></div>
-
-<div class="item"><h3>Chicken Cheese Pizza</h3><p>₹299</p><button onclick="add('Chicken Cheese Pizza',299)">Add</button></div>
-
-<div class="item"><h3>Hot Wings Special Pizza</h3><p>₹349</p><button onclick="add('Hot Wings Special Pizza',349)">Add</button></div>
-
-</div>
-
-</section>
-
-<section id="burgers">
-
-<h2>Burgers</h2>
-
-<div class="menu-grid">
-
-<div class="item"><h3>Veg Burger</h3><p>₹60</p><button onclick="add('Veg Burger',60)">Add</button></div>
-
-<div class="item"><h3>Chicken Burger</h3><p>₹80</p><button onclick="add('Chicken Burger',80)">Add</button></div>
-
-<div class="item"><h3>Chicken Cheese Burger</h3><p>₹100</p><button onclick="add('Chicken Cheese Burger',100)">Add</button></div>
+<div class="item"><h4>Margherita Pizza</h4><p>₹199</p><button onclick="add('Margherita Pizza',199)">Add</button></div>
+<div class="item"><h4>Paneer Cheese Pizza</h4><p>₹249</p><button onclick="add('Paneer Cheese Pizza',249)">Add</button></div>
+<div class="item"><h4>Paneer Tikka Pizza</h4><p>₹269</p><button onclick="add('Paneer Tikka Pizza',269)">Add</button></div>
+<div class="item"><h4>Chicken Cheese Pizza</h4><p>₹299</p><button onclick="add('Chicken Cheese Pizza',299)">Add</button></div>
+<div class="item"><h4>Meat Lovers Pizza</h4><p>₹349</p><button onclick="add('Meat Lovers Pizza',349)">Add</button></div>
+<div class="item"><h4>Chicken Tikka Pizza</h4><p>₹299</p><button onclick="add('Chicken Tikka Pizza',299)">Add</button></div>
+<div class="item"><h4>Achari Chicken Pizza</h4><p>₹299</p><button onclick="add('Achari Chicken Pizza',299)">Add</button></div>
+<div class="item"><h4>Mixed Pizza (Large)</h4><p>₹399</p><button onclick="add('Mixed Pizza',399)">Add</button></div>
+<div class="item"><h4>Hot Wings Special Pizza</h4><p>₹449</p><button onclick="add('Hot Wings Special Pizza',449)">Add</button></div>
+<div class="item"><h4>Corn Cheese Pizza</h4><p>₹249</p><button onclick="add('Corn Cheese Pizza',249)">Add</button></div>
+<div class="item"><h4>Special Combo Pizza</h4><p>₹499</p><button onclick="add('Special Combo Pizza',499)">Add</button></div>
 
 </div>
 
-</section>
-
-<section id="rolls">
-
-<h2>Rolls</h2>
-
-<div class="menu-grid">
-
-<div class="item"><h3>Veg Roll</h3><p>₹50</p><button onclick="add('Veg Roll',50)">Add</button></div>
-
-<div class="item"><h3>Egg Roll</h3><p>₹60</p><button onclick="add('Egg Roll',60)">Add</button></div>
-
-<div class="item"><h3>Chicken Roll</h3><p>₹80</p><button onclick="add('Chicken Roll',80)">Add</button></div>
-
 </div>
 
-</section>
+<!-- CART -->
 
-<section id="rice">
-
-<h2>Rice</h2>
-
-<div class="menu-grid">
-
-<div class="item"><h3>Veg Fried Rice</h3><p>₹70</p><button onclick="add('Veg Fried Rice',70)">Add</button></div>
-
-<div class="item"><h3>Egg Fried Rice</h3><p>₹90</p><button onclick="add('Egg Fried Rice',90)">Add</button></div>
-
-<div class="item"><h3>Chicken Fried Rice</h3><p>₹120</p><button onclick="add('Chicken Fried Rice',120)">Add</button></div>
-
-</div>
-
-</section>
-
-<section id="noodles">
-
-<h2>Noodles</h2>
-
-<div class="menu-grid">
-
-<div class="item"><h3>Veg Noodles</h3><p>₹70</p><button onclick="add('Veg Noodles',70)">Add</button></div>
-
-<div class="item"><h3>Chicken Noodles</h3><p>₹120</p><button onclick="add('Chicken Noodles',120)">Add</button></div>
-
-<div class="item"><h3>Mixed Noodles</h3><p>₹150</p><button onclick="add('Mixed Noodles',150)">Add</button></div>
-
-</div>
-
-</section>
-
-<section id="biryani">
-
-<h2>Biryani</h2>
-
-<div class="menu-grid">
-
-<div class="item"><h3>Chicken Dum Biryani</h3><p>₹180</p><button onclick="add('Chicken Dum Biryani',180)">Add</button></div>
-
-<div class="item"><h3>Mutton Dum Biryani</h3><p>₹250</p><button onclick="add('Mutton Dum Biryani',250)">Add</button></div>
-
-</div>
-
-</section>
-
-<section id="tandoori">
-
-<h2>Tandoori</h2>
-
-<div class="menu-grid">
-
-<div class="item"><h3>Chicken Tandoori</h3><p>₹220</p><button onclick="add('Chicken Tandoori',220)">Add</button></div>
-
-<div class="item"><h3>Paneer Tikka</h3><p>₹180</p><button onclick="add('Paneer Tikka',180)">Add</button></div>
-
-</div>
-
-</section>
-
-<section id="beverages">
-
-<h2>Beverages</h2>
-
-<div class="menu-grid">
-
-<div class="item"><h3>Tea</h3><p>₹20</p><button onclick="add('Tea',20)">Add</button></div>
-
-<div class="item"><h3>Coffee</h3><p>₹30</p><button onclick="add('Coffee',30)">Add</button></div>
-
-<div class="item"><h3>Lassi</h3><p>₹60</p><button onclick="add('Lassi',60)">Add</button></div>
-
-</div>
-
-</section>
-
-<section class="cart-box">
+<div class="cart">
 
 <h2>Your Cart</h2>
 
@@ -275,22 +146,34 @@ padding:20px;
 <h3>Total ₹<span id="total">0</span></h3>
 
 <input id="name" placeholder="Your Name">
-
 <input id="phone" placeholder="Phone">
-
-<input id="address" placeholder="Address">
+<input id="address" placeholder="Delivery Address">
 
 <button onclick="order()">Place Order</button>
 
-</section>
+</div>
 
-<footer>
+<!-- TABLE BOOKING -->
 
-<p>📞 Home Delivery: 9957603281</p>
+<div class="cart">
 
-<p>© Hot Wings Restaurant</p>
+<h2>Book a Table</h2>
 
-</footer>
+<input placeholder="Name">
+<input placeholder="Phone">
+<input type="date">
+<input type="time">
+
+<select>
+<option>2 Persons</option>
+<option>4 Persons</option>
+<option>6 Persons</option>
+<option>10 Persons</option>
+</select>
+
+<button onclick="alert('Table booked successfully')">Book Table</button>
+
+</div>
 
 <script>
 
@@ -329,12 +212,22 @@ document.getElementById("total").innerText=total
 
 function order(){
 
-alert("Order placed successfully!")
+let name=document.getElementById("name").value
+let phone=document.getElementById("phone").value
+let address=document.getElementById("address").value
 
-cart=[]
-total=0
+let message="Order:%0A"
 
-update()
+cart.forEach(item=>{
+message+=item.name+" ₹"+item.price+"%0A"
+})
+
+message+="Total: ₹"+total+"%0A"
+message+="Name: "+name+"%0A"
+message+="Phone: "+phone+"%0A"
+message+="Address: "+address
+
+window.open("https://wa.me/919957603281?text="+message)
 
 }
 
