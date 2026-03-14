@@ -8,9 +8,9 @@
 <style>
 
 body{
-margin:0;
 font-family:Arial;
-background:#f4f4f4;
+margin:0;
+background:#fafafa;
 }
 
 header{
@@ -21,24 +21,24 @@ text-align:center;
 }
 
 .container{
-max-width:900px;
+max-width:1000px;
 margin:auto;
 padding:20px;
 }
 
 .category{
-margin-top:30px;
+margin-top:40px;
 }
 
 .category h2{
 border-bottom:2px solid #ddd;
-padding-bottom:5px;
+padding-bottom:8px;
 }
 
 .food{
 background:white;
-padding:15px;
 margin:10px 0;
+padding:15px;
 border-radius:10px;
 display:flex;
 justify-content:space-between;
@@ -66,7 +66,7 @@ cursor:pointer;
 .cart{
 background:white;
 padding:20px;
-margin-top:30px;
+margin-top:40px;
 border-radius:10px;
 box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
@@ -90,7 +90,6 @@ font-size:16px;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -98,7 +97,7 @@ font-size:16px;
 <header>
 
 <h1>🔥 Hot Wings Restaurant</h1>
-<p>Online Food Ordering & Table Booking</p>
+<p>Online Food Ordering</p>
 
 </header>
 
@@ -112,13 +111,11 @@ font-size:16px;
 
 <ul id="cart"></ul>
 
-<h3>Total ₹<span id="total">0</span></h3>
-
-<input id="name" placeholder="Name">
+<input id="name" placeholder="Customer Name">
 <input id="phone" placeholder="Phone">
 <input id="address" placeholder="Address">
 
-<button class="orderbtn" onclick="sendOrder()">Order on WhatsApp</button>
+<button class="orderbtn" onclick="sendOrder()">Order via WhatsApp</button>
 
 </div>
 
@@ -129,9 +126,8 @@ font-size:16px;
 
 <input id="bname" placeholder="Name">
 <input id="bphone" placeholder="Phone">
-
-<input id="bdate" type="date">
-<input id="btime" type="time">
+<input type="date" id="bdate">
+<input type="time" id="btime">
 
 <select id="bpersons">
 
@@ -150,76 +146,115 @@ font-size:16px;
 
 <script>
 
-let menu={
+let menu = {
 
 "Momos":[
-"Deep Fried Momo",
-"Pan Fried Momo",
-"Honey Toast Momo",
-"Butter Toast Momo",
-"Hot Garlic Momo",
-"Chilli Soya Toast Momo",
-"Mayonnaise Momo",
-"Schezwan Momo",
-"Tandoori Momo",
-"Dahi Momo",
-"Afghani Momo",
-"Kurkure Momo",
-"Momo Thali (15pcs)",
-"Hariyali Momo",
-"Pizza Momo",
-"Wonton Momo"
+{name:"Deep Fried Momo",price:120},
+{name:"Pan Fried Momo",price:120},
+{name:"Honey Toast Momo",price:140},
+{name:"Butter Toast Momo",price:140},
+{name:"Hot Garlic Momo",price:150},
+{name:"Chilli Soya Toast Momo",price:150},
+{name:"Mayonnaise Momo",price:150},
+{name:"Schezwan Momo",price:150},
+{name:"Tandoori Momo",price:180},
+{name:"Dahi Momo",price:150},
+{name:"Afghani Momo",price:180},
+{name:"Kurkure Momo",price:160},
+{name:"Momo Thali (15pcs)",price:220},
+{name:"Hariyali Momo",price:180},
+{name:"Pizza Momo",price:200},
+{name:"Wonton Momo",price:180}
 ],
 
 "Pizza":[
-"Margherita Pizza",
-"Paneer Cheese Pizza",
-"Paneer Tikka Pizza",
-"Chicken Cheese Pizza",
-"Meat Lovers Pizza",
-"Chicken Tikka Pizza",
-"Achari Chicken Pizza",
-"Mixed Pizza (Large)",
-"Hot Wings Special Pizza (Super large)",
-"Corn Cheese Pizza",
-"Special Combo Pizza"
+{name:"Margherita Pizza",price:180},
+{name:"Paneer Cheese Pizza",price:220},
+{name:"Paneer Tikka Pizza",price:240},
+{name:"Chicken Cheese Pizza",price:260},
+{name:"Meat Lovers Pizza",price:320},
+{name:"Chicken Tikka Pizza",price:260},
+{name:"Achari Chicken Pizza",price:260},
+{name:"Mixed Pizza (Large)",price:350},
+{name:"Hot Wings Special Pizza (Super large)",price:450},
+{name:"Corn Cheese Pizza",price:220},
+{name:"Special Combo Pizza",price:300}
 ],
 
 "Burgers":[
-"Veg Burger",
-"Chicken Burger",
-"Chicken Cheese Burger",
-"Veg Cheese Burger"
+{name:"Veg Burger",price:90},
+{name:"Chicken Burger",price:120},
+{name:"Chicken Cheese Burger",price:150},
+{name:"Veg Cheese Burger",price:120}
 ],
 
 "Beverages":[
-"Coffee",
-"Lime Juice",
-"Masala Cold Drink",
-"Cold Coffee",
-"Lassi",
-"Coffee Xpresso"
+{name:"Coffee",price:40},
+{name:"Lime Juice",price:40},
+{name:"Masala Cold Drink",price:50},
+{name:"Cold Coffee",price:80},
+{name:"Lassi",price:70},
+{name:"Coffee Xpresso",price:80}
 ],
 
 "Rolls":[
-"Veg Roll",
-"Egg Roll",
-"Double Egg Roll",
-"Jumbo Egg Roll",
-"Chicken Roll",
-"Egg Chicken Roll",
-"Paneer Roll",
-"Special Roll"
+{name:"Veg Roll",price:90},
+{name:"Egg Roll",price:100},
+{name:"Double Egg Roll",price:120},
+{name:"Jumbo Egg Roll",price:140},
+{name:"Chicken Roll",price:120},
+{name:"Egg Chicken Roll",price:140},
+{name:"Panner Roll",price:110},
+{name:"Special Roll",price:160}
 ],
 
 "Veg Starters":[
-"Paneer Pakoda",
-"Chilli Paneer Dry Fry",
-"Veg Manchurian",
-"Paneer Manchurian",
-"French Fry",
-"Honey Chilli Potato",
-"Crispy Chilli Corn"
+{name:"Paneer Pakoda",price:140},
+{name:"Chilli Paneer Dry Fry",price:180},
+{name:"Veg Manchurian",price:160},
+{name:"Paneer Manchurian",price:180},
+{name:"French Fry",price:120},
+{name:"Honey Chilli Potato",price:150},
+{name:"Crispy Chilli Corn",price:150}
+],
+
+"Rice":[
+{name:"Plain Rice",price:80},
+{name:"Ghee Rice",price:100},
+{name:"Veg Fried Rice",price:140},
+{name:"Jeera Rice",price:120},
+{name:"Egg Fried Rice",price:150},
+{name:"Paneer Fried Rice",price:160},
+{name:"Andhra Veg Rice",price:160},
+{name:"Chicken Fried Rice",price:170},
+{name:"Andhra Chicken Rice",price:180},
+{name:"Chicken Schezwan Fried Rice",price:180},
+{name:"Mixed Fried Rice",price:200},
+{name:"Singapoori Rice",price:180},
+{name:"Korean Rice",price:180},
+{name:"Hong Kong Rice",price:180}
+],
+
+"Noodles":[
+{name:"Veg Noodles",price:140},
+{name:"Egg Noodles",price:150},
+{name:"Egg Schezwan Noodles",price:160},
+{name:"Paneer Noodles",price:160},
+{name:"Chicken Noodles",price:170},
+{name:"Paneer Schezwan Noodles",price:170},
+{name:"Chicken Schezwan Noodles",price:180},
+{name:"Chicken Gravy Noodles",price:190},
+{name:"Paneer Gravy Noodles",price:180},
+{name:"Chicken Thukpa",price:180},
+{name:"Mixed Noodles",price:200},
+{name:"American Chopsuey",price:200}
+],
+
+"Biryani":[
+{name:"Chicken Dum Biryani",price:220},
+{name:"Paneer Dum Biryani",price:200},
+{name:"Egg Biryani",price:180},
+{name:"Mutton Dum Biryani",price:320}
 ]
 
 }
@@ -237,7 +272,6 @@ section.className="category"
 
 let title=document.createElement("h2")
 title.innerText=category
-
 section.appendChild(title)
 
 menu[category].forEach(food=>{
@@ -247,15 +281,15 @@ div.className="food"
 
 div.innerHTML=`
 
-<div>${food}</div>
+<div>${food.name} - ₹${food.price}</div>
 
 <div class="qty">
 
-<button onclick="change('${food}',-1)">-</button>
+<button onclick="change('${food.name}',-1)">-</button>
 
-<span id="${food}">0</span>
+<span id="${food.name}">0</span>
 
-<button onclick="change('${food}',1)">+</button>
+<button onclick="change('${food.name}',1)">+</button>
 
 </div>
 
@@ -308,14 +342,12 @@ list.appendChild(li)
 
 function sendOrder(){
 
-let msg="Food Order:%0A"
+let msg="Hot Wings Order:%0A"
 
 for(let item in cart){
-
 if(cart[item]>0){
 msg+=item+" x "+cart[item]+"%0A"
 }
-
 }
 
 msg+="Name:"+document.getElementById("name").value+"%0A"
